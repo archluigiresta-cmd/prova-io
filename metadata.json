@@ -1,5 +1,5 @@
 {
-  "name": "Applicazione React Vuota",
-  "description": "Una applicazione React di base e vuota, pronta per essere sviluppata. Include la configurazione di base per React, TypeScript e Tailwind CSS.",
+  "name": "Patrimonio gest pro",
+  "description": "Un'applicazione completa per la gestione del tuo patrimonio immobiliare. Traccia immobili, inquilini, contratti, scadenze, pagamenti e spese con un'interfaccia moderna e intuitiva.",
   "requestFramePermissions": []
 }
