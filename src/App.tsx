@@ -119,10 +119,19 @@ export default function App() {
     };
     
     const renderPage = () => {
-        const pageTypeForModal = currentPage.endsWith('e') ? currentPage.slice(0, -1) : currentPage.slice(0,-1);
+        const pageToModalTypeMap: Record<string, string> = {
+            immobili: 'immobile',
+            inquilini: 'inquilino',
+            contratti: 'contratto',
+            scadenze: 'scadenza',
+            spese: 'spesa',
+            veicoli: 'veicolo',
+        };
+        const pageTypeForModal = pageToModalTypeMap[currentPage];
+
         const props = { 
             onAdd: handleOpenModal, 
-            onEdit: (item) => handleOpenModal(pageTypeForModal, item), 
+            onEdit: (item: any) => handleOpenModal(pageTypeForModal, item), 
             onDelete: handleDelete 
         };
 

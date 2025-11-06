@@ -1,8 +1,15 @@
 import React from 'react';
 import { X } from 'lucide-react';
 
-// FIX: Add explicit types for component props.
-const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean, onClose: () => void, title: string, children: React.ReactNode }) => {
+// FIX: Use a type alias for props to fix issues with implicit children.
+type ModalProps = {
+    isOpen: boolean,
+    onClose: () => void,
+    title: string,
+    children: React.ReactNode,
+};
+
+const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
     if (!isOpen) return null;
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">

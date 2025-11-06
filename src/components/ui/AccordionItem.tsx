@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-// FIX: Add explicit types for component props.
-const AccordionItem = ({ title, count, children }: { title: React.ReactNode, count: number, children: React.ReactNode }) => {
+// FIX: Use a type alias for props to fix issues with implicit children and special props like `key`.
+type AccordionItemProps = {
+    title: React.ReactNode,
+    count: number,
+    children: React.ReactNode,
+};
+
+const AccordionItem = ({ title, count, children }: AccordionItemProps) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div className="bg-white rounded-lg shadow-sm border">
