@@ -1,4 +1,3 @@
-// FILE CORRETTO E VERIFICATO IN DATA 25/07/2024 - NON MODIFICARE
 {
   "compilerOptions": {
     "target": "ES2020",
@@ -6,16 +5,12 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
