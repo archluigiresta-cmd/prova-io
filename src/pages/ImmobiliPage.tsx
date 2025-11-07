@@ -17,11 +17,11 @@ const ImmobiliPage = ({ immobili, setImmobili, onAdd, onEdit, onDelete }: Immobi
     return (
         <div>
             <div className="flex justify-between items-center mb-6">
-                <h1 className="text-2xl font-bold text-dark">Elenco Immobili</h1>
+                <h1 className="text-2xl font-bold text-gray-800">Elenco Immobili</h1>
                 <div className="flex items-center gap-2">
                     <button onClick={() => alert('Funzione da implementare!')} className="p-2 rounded-md hover:bg-gray-100 text-gray-600"><UploadCloud className="inline-block mr-2"/> Importa da Excel</button>
-                    <button onClick={() => setViewMode('list')} className={`p-2 rounded-md ${viewMode === 'list' ? 'bg-secondary text-primary' : 'hover:bg-gray-100 text-gray-600'}`}><List/></button>
-                    <button onClick={() => setViewMode('grid')} className={`p-2 rounded-md ${viewMode === 'grid' ? 'bg-secondary text-primary' : 'hover:bg-gray-100 text-gray-600'}`}><Grip/></button>
+                    <button onClick={() => setViewMode('list')} className={`p-2 rounded-md ${viewMode === 'list' ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 text-gray-600'}`}><List/></button>
+                    <button onClick={() => setViewMode('grid')} className={`p-2 rounded-md ${viewMode === 'grid' ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100 text-gray-600'}`}><Grip/></button>
                     <Button onClick={() => onAdd('immobile')}><Plus className="inline-block mr-2" size={16}/> Aggiungi Immobile</Button>
                 </div>
             </div>
@@ -37,9 +37,9 @@ const ImmobiliPage = ({ immobili, setImmobili, onAdd, onEdit, onDelete }: Immobi
                                 <p className="text-gray-500 text-sm">{i.superficie} mq - {i.locali} locali</p>
                             </div>
                             <div className="p-4 bg-gray-50 flex justify-between items-center">
-                                <span className="font-bold text-primary text-lg">€{i.canone}/mese</span>
+                                <span className="font-bold text-blue-700 text-lg">€{i.canone}/mese</span>
                                 <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button onClick={() => onEdit(i)} className="text-gray-500 hover:text-primary"><Edit size={18}/></button>
+                                    <button onClick={() => onEdit(i)} className="text-gray-500 hover:text-blue-700"><Edit size={18}/></button>
                                     <button onClick={() => onDelete(i.id, 'immobile')} className="text-gray-500 hover:text-red-500"><Trash2 size={18}/></button>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@ const ImmobiliPage = ({ immobili, setImmobili, onAdd, onEdit, onDelete }: Immobi
                                     <td className="p-4 font-semibold text-gray-800">€{i.canone}</td>
                                     <td className="p-4">
                                          <div className="flex gap-2">
-                                            <button onClick={() => onEdit(i)} className="text-gray-500 hover:text-primary"><Edit size={18}/></button>
+                                            <button onClick={() => onEdit(i)} className="text-gray-500 hover:text-blue-700"><Edit size={18}/></button>
                                             <button onClick={() => onDelete(i.id, 'immobile')} className="text-gray-500 hover:text-red-500"><Trash2 size={18}/></button>
                                         </div>
                                     </td>

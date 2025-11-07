@@ -5,8 +5,8 @@ import App from './App';
 const rootElement = document.getElementById('root');
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   );
+} else {
+  console.error("L'elemento root non è stato trovato nel DOM.");
 }

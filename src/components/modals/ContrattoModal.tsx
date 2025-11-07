@@ -14,7 +14,8 @@ interface ContrattoModalProps {
 
 const ContrattoModal = ({ isOpen, onClose, onSave, contrattoToEdit, immobili, inquilini }: ContrattoModalProps) => {
     const [formData, setFormData] = useState({ immobileId: '', inquilinoId: '', dataInizio: '', dataFine: '', canone: 0 });
-    const immobiliLiberi = immobili.filter(i => i.status === 'Libero');
+    const immobiliLiberi = immobili.filter(i => i.status === 'Libero' || (contrattoToEdit && i.id === contrattoToEdit.immobileId));
+
 
     useEffect(() => {
         if (contrattoToEdit) setFormData(contrattoToEdit);
@@ -26,7 +27,7 @@ const ContrattoModal = ({ isOpen, onClose, onSave, contrattoToEdit, immobili, in
         const isNumber = type === 'number';
         setFormData({ ...formData, [name]: isNumber ? parseFloat(value) || 0 : value });
     };
-    const handleSubmit = (e) => { e.preventDefault(); onSave(formData); };
+    const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); onSave(formData); };
     return (
         <Modal isOpen={isOpen} onClose={onClose} title={contrattoToEdit ? 'Modifica Contratto' : 'Aggiungi Nuovo Contratto'}>
             <form onSubmit={handleSubmit} className="space-y-4">

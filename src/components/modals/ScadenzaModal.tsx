@@ -22,7 +22,7 @@ const ScadenzaModal = ({ isOpen, onClose, onSave, scadenzaToEdit, immobili }: Sc
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
-    const handleSubmit = (e) => { e.preventDefault(); onSave(formData); };
+    const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); onSave(formData); };
     return (
         <Modal isOpen={isOpen} onClose={onClose} title={scadenzaToEdit ? 'Modifica Scadenza' : 'Aggiungi Nuova Scadenza'}>
             <form onSubmit={handleSubmit} className="space-y-4">

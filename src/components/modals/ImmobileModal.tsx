@@ -32,7 +32,7 @@ const ImmobileModal = ({ isOpen, onClose, onSave, immobileToEdit }: ImmobileModa
         const isNumber = type === 'number';
         setFormData({ ...formData, [name]: isNumber ? parseFloat(value) || 0 : value });
     };
-    const handleSubmit = (e) => { e.preventDefault(); onSave(formData); };
+    const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); onSave(formData); };
     
     return (
         <Modal isOpen={isOpen} onClose={onClose} title={immobileToEdit ? 'Modifica Immobile' : 'Aggiungi Nuovo Immobile'}>

@@ -37,7 +37,7 @@ const SpesePage = ({ spese, immobili, veicoli, onAdd, onEdit, onDelete }: SpeseP
     return (
         <div>
             <div className="flex justify-between items-center mb-6">
-                <h1 className="text-2xl font-bold text-dark">Registro Spese</h1>
+                <h1 className="text-2xl font-bold text-gray-800">Registro Spese</h1>
                 <Button onClick={() => onAdd('spesa')}><Plus className="inline-block mr-2" size={16}/> Aggiungi Spesa</Button>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -78,7 +78,7 @@ const SpesePage = ({ spese, immobili, veicoli, onAdd, onEdit, onDelete }: SpeseP
                                 <td className="p-4">{s.data}</td><td className="p-4">{s.tipo}</td>
                                 <td className="p-4 text-red-600 font-semibold">- €{s.importo}</td><td className="p-4">{associato}</td>
                                 <td className="p-4"><div className="flex gap-2">
-                                    <button onClick={() => onEdit(s)} className="text-gray-500 hover:text-primary"><Edit size={18}/></button>
+                                    <button onClick={() => onEdit(s)} className="text-gray-500 hover:text-blue-700"><Edit size={18}/></button>
                                     <button onClick={() => onDelete(s.id, 'spesa')} className="text-gray-500 hover:text-red-500"><Trash2 size={18}/></button>
                                 </div></td>
                             </tr>)

@@ -5,6 +5,7 @@ export type Contratto = { id: string; immobileId: string; inquilinoId: string; d
 export type Scadenza = { id: string; immobileId: string; titolo: string; data: string; tipo: 'Affitto' | 'Tassa' | 'Utenza' | 'Manutenzione' };
 export type Pagamento = { id: string; contrattoId: string; importo: number; data: string; stato: 'Pagato' | 'In Attesa' | 'In Ritardo' };
 export type Spesa = { id: string; tipo: string; importo: number; data: string; immobileId?: string; veicoloId?: string; };
+export type Manutenzione = { id: string; immobileId?: string; veicoloId?: string; titolo: string; descrizione: string; data: string; costo: number; fornitore: string; stato: 'Da Fare' | 'In Corso' | 'Completato' };
 export type Veicolo = { id: string; nome: string; targa: string; modello: string; assicurazione: string; bollo: string; stato: 'Operativo' | 'Manutenzione' };
 
 // --- DATI DI ESEMPIO ---
@@ -40,6 +41,12 @@ export const initialSpese: Spesa[] = [
     { id: 'spe-001', tipo: 'Manutenzione', importo: 250, data: '2024-10-15', immobileId: 'imm-001' },
     { id: 'spe-002', tipo: 'Assicurazione', importo: 800, data: '2024-09-20', veicoloId: 'vei-001' },
     { id: 'spe-003', tipo: 'Utenze', importo: 150, data: '2024-10-25', immobileId: 'imm-002' },
+];
+
+export const initialManutenzioni: Manutenzione[] = [
+    { id: 'man-001', immobileId: 'imm-001', titolo: 'Riparazione caldaia', descrizione: 'La caldaia perde acqua, intervento urgente.', data: '2025-11-10', costo: 150, fornitore: 'Idraulico Express', stato: 'Da Fare' },
+    { id: 'man-002', veicoloId: 'vei-001', titolo: 'Tagliando annuale', descrizione: 'Controllo olio, filtri e pastiglie freni.', data: '2025-11-20', costo: 300, fornitore: 'Officina Audi Service', stato: 'In Corso' },
+    { id: 'man-003', immobileId: 'imm-002', titolo: 'Sostituzione lampadine', descrizione: 'Sostituite tutte le lampadine fulminate.', data: '2025-10-28', costo: 50, fornitore: 'Fai da te', stato: 'Completato' },
 ];
 
 export const initialVeicoli: Veicolo[] = [

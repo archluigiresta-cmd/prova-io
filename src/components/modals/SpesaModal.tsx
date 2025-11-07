@@ -15,7 +15,17 @@ interface SpesaModalProps {
 const SpesaModal = ({ isOpen, onClose, onSave, spesaToEdit, immobili, veicoli }: SpesaModalProps) => {
     const [formData, setFormData] = useState({ tipo: 'Manutenzione', importo: 0, data: '', immobileId: '', veicoloId: '' });
     useEffect(() => {
-        if (spesaToEdit) setFormData(spesaToEdit);
+        // FIX: `spesaToEdit` is not directly assignable to `formData` because its `immobileId` and `veicoloId` properties are optional.
+        // This ensures that the object passed to `setFormData` always has string values for these properties, matching the state's type.
+        if (spesaToEdit) {
+            setFormData({
+                tipo: spesaToEdit.tipo,
+                importo: spesaToEdit.importo,
+                data: spesaToEdit.data,
+                immobileId: spesaToEdit.immobileId || '',
+                veicoloId: spesaToEdit.veicoloId || '',
+            });
+        }
         else setFormData({ tipo: 'Manutenzione', importo: 0, data: '', immobileId: '', veicoloId: '' });
     }, [spesaToEdit, isOpen]);
     
@@ -24,7 +34,7 @@ const SpesaModal = ({ isOpen, onClose, onSave, spesaToEdit, immobili, veicoli }:
         const isNumber = type === 'number';
         setFormData({ ...formData, [name]: isNumber ? parseFloat(value) || 0 : value });
     };
-    const handleSubmit = (e) => { e.preventDefault(); onSave(formData); };
+    const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); onSave(formData); };
     return (
         <Modal isOpen={isOpen} onClose={onClose} title={spesaToEdit ? 'Modifica Spesa' : 'Aggiungi Nuova Spesa'}>
             <form onSubmit={handleSubmit} className="space-y-4">

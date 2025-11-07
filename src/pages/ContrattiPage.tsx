@@ -24,7 +24,7 @@ const ContrattiPage = ({ contratti, immobili, inquilini, onAdd, onEdit, onDelete
     return (
         <div>
             <div className="flex justify-between items-center mb-6">
-                <h1 className="text-2xl font-bold text-dark">Gestione Contratti</h1>
+                <h1 className="text-2xl font-bold text-gray-800">Gestione Contratti</h1>
                 <Button onClick={() => onAdd('contratto')}><Plus className="inline-block mr-2" size={16}/> Nuovo Contratto</Button>
             </div>
             <div className="space-y-4">
@@ -33,14 +33,14 @@ const ContrattiPage = ({ contratti, immobili, inquilini, onAdd, onEdit, onDelete
                         {immobile.contratti.map(contratto => {
                             const inquilino = inquilini.find(i => i.id === contratto.inquilinoId);
                             return (
-                                <div key={contratto.id} className="p-3 bg-light rounded-md flex justify-between items-center">
+                                <div key={contratto.id} className="p-3 bg-gray-100 rounded-md flex justify-between items-center">
                                     <div>
                                         <p className="font-semibold">Contratto con {inquilino?.nome || 'N/D'}</p>
                                         <p className="text-sm text-gray-600">Dal {contratto.dataInizio} al {contratto.dataFine}</p>
-                                        <p className="text-sm font-bold text-primary mt-1">€{contratto.canone}/mese</p>
+                                        <p className="text-sm font-bold text-blue-700 mt-1">€{contratto.canone}/mese</p>
                                     </div>
                                     <div className="flex gap-2">
-                                        <button onClick={() => onEdit(contratto)} className="text-gray-500 hover:text-primary"><Edit size={18}/></button>
+                                        <button onClick={() => onEdit(contratto)} className="text-gray-500 hover:text-blue-700"><Edit size={18}/></button>
                                         <button onClick={() => onDelete(contratto.id, 'contratto')} className="text-gray-500 hover:text-red-500"><Trash2 size={18}/></button>
                                     </div>
                                 </div>

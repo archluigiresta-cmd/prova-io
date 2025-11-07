@@ -17,12 +17,12 @@ const VeicoloModal = ({ isOpen, onClose, onSave, veicoloToEdit }: VeicoloModalPr
         else setFormData({ nome: '', targa: '', modello: '', assicurazione: '', bollo: '', stato: 'Operativo' });
     }, [veicoloToEdit, isOpen]);
     
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => { e.preventDefault(); onSave(formData); };
+    const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); onSave(formData); };
     return (
         <Modal isOpen={isOpen} onClose={onClose} title={veicoloToEdit ? 'Modifica Veicolo' : 'Aggiungi Nuovo Veicolo'}>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -35,6 +35,7 @@ const VeicoloModal = ({ isOpen, onClose, onSave, veicoloToEdit }: VeicoloModalPr
                     <div><label className="block text-sm font-medium">Scad. Assicurazione</label><input type="date" name="assicurazione" value={formData.assicurazione} onChange={handleChange} className="input"/></div>
                     <div><label className="block text-sm font-medium">Scad. Bollo</label><input type="date" name="bollo" value={formData.bollo} onChange={handleChange} className="input"/></div>
                 </div>
+                 <div><label className="block text-sm font-medium">Stato</label><select name="stato" value={formData.stato} onChange={handleChange} className="input"><option>Operativo</option><option>Manutenzione</option></select></div>
                 <div className="flex justify-end gap-2 pt-4">
                     <Button type="button" variant="secondary" onClick={onClose}>Annulla</Button>
                     <Button type="submit">{veicoloToEdit ? 'Salva' : 'Aggiungi Veicolo'}</Button>

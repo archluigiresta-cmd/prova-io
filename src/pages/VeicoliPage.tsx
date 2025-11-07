@@ -14,7 +14,7 @@ interface VeicoliPageProps {
 const VeicoliPage = ({ veicoli, onAdd, onEdit, onDelete }: VeicoliPageProps) => (
     <div>
         <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold text-dark">Elenco Veicoli</h1>
+            <h1 className="text-2xl font-bold text-gray-800">Elenco Veicoli</h1>
             <Button onClick={() => onAdd('veicolo')}><Plus className="inline-block mr-2" size={16}/> Aggiungi Veicolo</Button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -31,7 +31,7 @@ const VeicoliPage = ({ veicoli, onAdd, onEdit, onDelete }: VeicoliPageProps) => 
                         <p className="flex justify-between"><span>Scad. Bollo:</span> <span className="font-semibold">{v.bollo}</span></p>
                     </div>
                      <div className="mt-4 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button onClick={() => onEdit(v)} className="text-gray-500 hover:text-primary"><Edit size={18}/></button>
+                        <button onClick={() => onEdit(v)} className="text-gray-500 hover:text-blue-700"><Edit size={18}/></button>
                         <button onClick={() => onDelete(v.id, 'veicolo')} className="text-gray-500 hover:text-red-500"><Trash2 size={18}/></button>
                     </div>
                 </Card>

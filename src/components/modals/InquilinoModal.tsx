@@ -22,7 +22,7 @@ const InquilinoModal = ({ isOpen, onClose, onSave, inquilinoToEdit }: InquilinoM
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => { e.preventDefault(); onSave(formData); };
+    const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); onSave(formData); };
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} title={inquilinoToEdit ? 'Modifica Inquilino' : 'Aggiungi Nuovo Inquilino'}>

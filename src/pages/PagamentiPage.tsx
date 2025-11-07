@@ -40,7 +40,7 @@ const PagamentiPage = ({ pagamenti, contratti, immobili, inquilini }: PagamentiP
     return (
         <div>
             <div className="flex justify-between items-center mb-6">
-                <h1 className="text-2xl font-bold text-dark">Registro Pagamenti e Entrate</h1>
+                <h1 className="text-2xl font-bold text-gray-800">Registro Pagamenti e Entrate</h1>
                 <div className="flex items-center gap-2">
                     <Button onClick={() => alert('Funzione da implementare!')} variant="secondary">Esporta CSV</Button>
                     <Button onClick={() => alert('Funzione da implementare!')}>Registra Pagamento</Button>
@@ -61,7 +61,7 @@ const PagamentiPage = ({ pagamenti, contratti, immobili, inquilini }: PagamentiP
                     <div className="flex gap-4">
                         {['Tutti', 'Pagato', 'In Attesa', 'In Ritardo'].map(stato => (
                             <button key={stato} onClick={() => setFiltroStato(stato)}
-                                className={`py-2 px-1 font-semibold ${filtroStato === stato ? 'border-b-2 border-primary text-primary' : 'text-gray-500 hover:text-gray-700'}`}>
+                                className={`py-2 px-1 font-semibold ${filtroStato === stato ? 'border-b-2 border-blue-700 text-blue-700' : 'text-gray-500 hover:text-gray-700'}`}>
                                 {stato}
                             </button>
                         ))}
@@ -96,7 +96,7 @@ const PagamentiPage = ({ pagamenti, contratti, immobili, inquilini }: PagamentiP
                     </AccordionItem>
                 ))}
             </div>
-            <div className="mt-6 bg-primary text-white rounded-lg p-4 flex justify-between items-center font-bold text-xl">
+            <div className="mt-6 bg-blue-700 text-white rounded-lg p-4 flex justify-between items-center font-bold text-xl">
                 <span>Totale Complessivo</span>
                 <span>€{totale.toFixed(2)}</span>
             </div>
