@@ -78,10 +78,36 @@ export default function App() {
     const handleSave = (itemData: any) => {
         const { type, item } = modalState;
         
+        if (type === 'contratto') {
+            const { contractData, tenantData } = itemData;
+
+            if (item) { // Edit
+                setContratti((prevState: Contratto[]) => prevState.map(c => c.id === item.id ? { ...c, ...contractData } : c));
+                
+                if (tenantData && tenantData.id) {
+                    setInquilini((prevState: Inquilino[]) => prevState.map(i => i.id === tenantData.id ? { ...i, ...tenantData } : i));
+                }
+
+                if (item.immobileId !== contractData.immobileId) {
+                     setImmobili((prevImmobili: Immobile[]) => prevImmobili.map(i => {
+                        if (i.id === item.immobileId) return { ...i, status: 'Libero' };
+                        if (i.id === contractData.immobileId) return { ...i, status: 'Affittato' };
+                        return i;
+                    }));
+                }
+
+            } else { // Add
+                const newItem = { ...contractData, id: `con-${Date.now()}` };
+                setContratti((prevState: Contratto[]) => [newItem, ...prevState]);
+                setImmobili((prevImmobili: Immobile[]) => prevImmobili.map(i => i.id === newItem.immobileId ? {...i, status: 'Affittato'} : i));
+            }
+            handleCloseModal();
+            return;
+        }
+
         const dataMap: any = {
             immobile: { state: immobili, setState: setImmobili, prefix: 'imm' },
             inquilino: { state: inquilini, setState: setInquilini, prefix: 'inq' },
-            contratto: { state: contratti, setState: setContratti, prefix: 'con' },
             scadenza: { state: scadenze, setState: setScadenze, prefix: 'sca' },
             veicolo: { state: veicoli, setState: setVeicoli, prefix: 'vei' },
             spesa: { state: spese, setState: setSpese, prefix: 'spe' },
@@ -98,10 +124,6 @@ export default function App() {
         } else { // Add
             const newItem = { ...itemData, id: `${prefix}-${Date.now()}` };
             setState((prevState: any[]) => [newItem, ...prevState]);
-            // Post-add logic
-            if (type === 'contratto') {
-                setImmobili(immobili.map(i => i.id === newItem.immobileId ? {...i, status: 'Affittato'} : i));
-            }
         }
         handleCloseModal();
     };
